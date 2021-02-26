@@ -27,7 +27,7 @@ export class EditItemComponent implements OnInit {
   item: Item = null;
 
   /** key of the item  - item id*/
-  itemKey: number = 0;
+  itemKey = 0;
 
   /**
    * constructor

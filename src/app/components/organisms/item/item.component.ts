@@ -30,7 +30,7 @@ import { MatInput } from '@angular/material/input';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
 })
-export class ItemComponent implements OnInit, AfterViewInit {
+export class ItemComponent implements AfterViewInit {
   @ViewChild('inpTitle', { static: false }) inpTitle: MatInput;
   @ViewChild('inpDetails', { static: false }) inpDetails: MatInput;
   @ViewChild('inpLink', { static: false }) inpLink: MatInput;
@@ -60,8 +60,6 @@ export class ItemComponent implements OnInit, AfterViewInit {
     public firebaseService: FirebaseService,
     public dialog: MatDialog
   ) {}
-
-  ngOnInit() {}
 
   /** process after view is initialised - life cycle call back */
   ngAfterViewInit() {

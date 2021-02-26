@@ -9,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AuthService {
   /** log in flag */
-  isLogIn: boolean = false;
+  isLogIn = false;
 
   /**
    * constructor
