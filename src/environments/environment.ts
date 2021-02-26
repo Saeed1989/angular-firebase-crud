@@ -10,8 +10,8 @@ export const environment = {
     databaseURL: 'https://breakingnewsbangla-5e365.firebaseio.com',
     projectId: 'breakingnewsbangla-5e365',
     storageBucket: 'gs://breakingnewsbangla-5e365.appspot.com',
-    messagingSenderId: '881696262354'
-  }
+    messagingSenderId: '881696262354',
+  },
 };
 
 /*

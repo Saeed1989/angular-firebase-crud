@@ -2,29 +2,35 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Item } from '../model/Item';
-import { analytics } from 'firebase';
-import { rejects } from 'assert';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FirebaseService {
-
   private readonly ITEM_IMG_FOLDER = 'itemImages/';
-  constructor(public db: AngularFirestore, private afStorage: AngularFireStorage) {}
+  constructor(
+    public db: AngularFirestore,
+    private afStorage: AngularFireStorage
+  ) {}
 
   getAvatars() {
-      return this.db.collection('/avatar').valueChanges();
+    return this.db.collection('/avatar').valueChanges();
   }
 
   searchItems(searchValue) {
-    return this.db.collection('items_table', ref => ref.where('name', '>=', searchValue)
-      .where('name', '<=', searchValue + '\uf8ff'))
+    return this.db
+      .collection('items_table', (ref) =>
+        ref
+          .where('name', '>=', searchValue)
+          .where('name', '<=', searchValue + '\uf8ff')
+      )
       .snapshotChanges();
   }
 
   searchUsersByNumber(value) {
-    return this.db.collection('items_table', ref => ref.orderBy('number').startAt(value)).snapshotChanges();
+    return this.db
+      .collection('items_table', (ref) => ref.orderBy('number').startAt(value))
+      .snapshotChanges();
   }
 
   getItem(itemKey: any) {
@@ -40,9 +46,10 @@ export class FirebaseService {
   }
 
   getItems() {
-    return this.db.collection('items_table',  ref => ref.orderBy('number')).snapshotChanges();
+    return this.db
+      .collection('items_table', (ref) => ref.orderBy('number'))
+      .snapshotChanges();
   }
-
 
   creteItem(value: Item) {
     return this.db.collection('items_table').add({
@@ -53,7 +60,7 @@ export class FirebaseService {
       type: value.type,
       imageUrl: value.imageUrl,
       url: value.url,
-      details: value.details
+      details: value.details,
     });
   }
 
@@ -62,24 +69,30 @@ export class FirebaseService {
     const randomId = Math.random().toString(36).substring(2);
     const ref = this.afStorage.ref(this.ITEM_IMG_FOLDER + randomId);
     return new Promise<any>((resolve: any, reject: any) => {
-      ref.put(file).then(
-        () => {
-          ref.getDownloadURL().subscribe(response => {
+      ref
+        .put(file)
+        .then(() => {
+          ref.getDownloadURL().subscribe((response) => {
             resolve(response);
           });
-        }
-      ).catch(error => {
-        reject(error);
-      });
+        })
+        .catch((error) => {
+          reject(error);
+        });
     });
   }
 
   getLastId() {
-    return this.db.collection('app_settings').doc('cloudSettings').snapshotChanges();
+    return this.db
+      .collection('app_settings')
+      .doc('cloudSettings')
+      .snapshotChanges();
   }
 
   setLastId(value: number) {
-    return this.db.collection('app_settings').doc('cloudSettings').update({maxId: value});
+    return this.db
+      .collection('app_settings')
+      .doc('cloudSettings')
+      .update({ maxId: value });
   }
-
 }

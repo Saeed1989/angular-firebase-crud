@@ -2,7 +2,7 @@
  * Home page component
  *
  * @version  0.1.1
- * @url 
+ * @url
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -11,30 +11,27 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../../services/firebase.service';
-import { Router, Params } from '@angular/router';
-import { Item } from '../../../model/Item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   items: Array<any>;
 
   constructor(
     public firebaseService: FirebaseService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getData();
   }
 
   getData() {
-    this.firebaseService.getItems()
-    .subscribe(result => {
+    this.firebaseService.getItems().subscribe((result) => {
       this.items = result;
       console.log(this.items);
     });
@@ -43,5 +40,4 @@ export class HomeComponent implements OnInit {
   viewDetails(item) {
     this.router.navigate(['/details/' + item.payload.doc.id]);
   }
-
 }

@@ -2,7 +2,7 @@
  * Add page component
  *
  * @version  0.1.1
- * @url 
+ * @url
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -11,7 +11,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AvatarDialogComponent } from '../../organisms/avatar-dialog/avatar-dialog.component';
 import { FirebaseService } from '../../../services/firebase.service';
@@ -21,10 +26,9 @@ import { Item } from '../../../model/Item';
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.scss']
+  styleUrls: ['./add-item.component.scss'],
 })
 export class AddItemComponent implements OnInit {
-
   item: Item = {
     id: null,
     number: null,
@@ -36,20 +40,18 @@ export class AddItemComponent implements OnInit {
     details: null,
   };
 
-
-
   constructor(
     public firebaseService: FirebaseService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.firebaseService.getLastId().subscribe((result: any) => {
       console.log(result.payload.data());
-      this.item.id = (result.payload.data().maxId + 1 );
+      this.item.id = result.payload.data().maxId + 1;
       if (this.item.id > 9999) {
         this.item.id = 0;
       }
@@ -59,13 +61,10 @@ export class AddItemComponent implements OnInit {
   saveItem() {
     console.log(this.item);
     this.firebaseService.setLastId(this.item.id);
-    this.firebaseService.creteItem(this.item)
-    .then(
-      res => {
-        console.log(res);
-        this.router.navigate(['/home']);
-      }
-    );
+    this.firebaseService.creteItem(this.item).then((res) => {
+      console.log(res);
+      this.router.navigate(['/home']);
+    });
   }
 
   delete() {
@@ -75,5 +74,4 @@ export class AddItemComponent implements OnInit {
   cancel() {
     this.router.navigate(['/home']);
   }
-
 }

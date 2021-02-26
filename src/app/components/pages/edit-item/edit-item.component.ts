@@ -2,7 +2,7 @@
  * Edit page component
  *
  * @version  0.1.1
- * @url 
+ * @url
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -11,7 +11,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AvatarDialogComponent } from '../../organisms/avatar-dialog/avatar-dialog.component';
 import { FirebaseService } from '../../../services/firebase.service';
@@ -21,14 +26,13 @@ import { Item } from '../../../model/Item';
 @Component({
   selector: 'app-edit-item',
   templateUrl: './edit-item.component.html',
-  styleUrls: ['./edit-item.component.scss']
+  styleUrls: ['./edit-item.component.scss'],
 })
 export class EditItemComponent implements OnInit {
-
   exampleForm: FormGroup;
 
- item: Item = null;
- itemKey: number = 0;
+  item: Item = null;
+  itemKey: number = 0;
 
   constructor(
     public firebaseService: FirebaseService,
@@ -36,10 +40,10 @@ export class EditItemComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.data.subscribe(routeData => {
+    this.route.data.subscribe((routeData) => {
       const data = routeData.data;
       if (data) {
         let newItem: Item = data.payload.data();
@@ -51,30 +55,28 @@ export class EditItemComponent implements OnInit {
   }
 
   saveItem() {
-    this.firebaseService.updateItem(this.itemKey, this.item)
-    .then(
-      res => {
-        this.router.navigate(['/home']);
-      }
-    );
+    this.firebaseService.updateItem(this.itemKey, this.item).then((res) => {
+      this.router.navigate(['/home']);
+    });
   }
 
   delete() {
-    this.firebaseService.deleteItem(this.itemKey)
-    .then(
-      res => {
-        this.router.navigate(['/home']);
-      },
-      err => {
+    this.firebaseService
+      .deleteItem(this.itemKey)
+      .then(
+        (res) => {
+          this.router.navigate(['/home']);
+        },
+        (err) => {
+          console.log(err);
+        }
+      )
+      .catch((err) => {
         console.log(err);
-      }
-    ).catch(err => {
-      console.log(err);
-    });
+      });
   }
 
   cancel() {
     this.router.navigate(['/home']);
   }
-
 }

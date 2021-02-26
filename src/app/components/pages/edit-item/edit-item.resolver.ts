@@ -2,7 +2,7 @@
  * Item edit resolver
  *
  * @version  0.1.1
- * @url 
+ * @url
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -10,24 +10,23 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import {
+  Resolve,
+  ActivatedRouteSnapshot,
+  ActivatedRoute,
+} from '@angular/router';
 import { FirebaseService } from '../../../services/firebase.service';
 
 @Injectable()
 export class EditItemResolver implements Resolve<any> {
-
-  constructor(public firebaseService: FirebaseService) { }
+  constructor(public firebaseService: FirebaseService) {}
 
   resolve(route: ActivatedRouteSnapshot) {
-
     return new Promise((resolve, reject) => {
       const userId = route.paramMap.get('id');
-      this.firebaseService.getItem(userId)
-      .subscribe(
-        data => {
-          resolve(data);
-        }
-      );
+      this.firebaseService.getItem(userId).subscribe((data) => {
+        resolve(data);
+      });
     });
   }
 }

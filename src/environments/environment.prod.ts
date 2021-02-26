@@ -6,6 +6,6 @@ export const environment = {
     databaseURL: 'https://districtnewspaper-40494.firebaseio.com/',
     projectId: 'districtnewspaper-40494',
     storageBucket: 'gs://districtnewspaper-40494.appspot.com',
-    messagingSenderId: '84539957000'
-  }
+    messagingSenderId: '84539957000',
+  },
 };

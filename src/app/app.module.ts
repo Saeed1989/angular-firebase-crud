@@ -6,9 +6,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseService } from './services/firebase.service';
@@ -32,7 +32,7 @@ import { environment } from '../environments/environment';
     AddItemComponent,
     ItemComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
   ],
   entryComponents: [AvatarDialogComponent],
   imports: [
@@ -51,15 +51,9 @@ import { environment } from '../environments/environment';
     MatDatepickerModule,
     MatNativeDateModule,
   ],
-  exports: [
-    MatDatepickerModule,
-    MatInputModule,
-    BrowserAnimationsModule
-  ],
+  exports: [MatDatepickerModule, MatInputModule, BrowserAnimationsModule],
   providers: [FirebaseService, EditItemResolver],
   bootstrap: [AppComponent],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

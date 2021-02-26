@@ -2,7 +2,7 @@
  * Login page component
  *
  * @version  0.1.1
- * @url 
+ * @url
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -16,29 +16,28 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   email = '';
   password = '';
 
-  constructor(private authService: AuthService,
-              private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.logOut();
   }
 
-  logIn( ) {
+  logIn() {
     console.log(this.email);
     console.log(this.password);
-    this.authService.signInWithEmailAndPassword(this. email, this. password).then(() => {
-      this.router.navigate(['home']);
-    }).catch((err) => {
-      alert(err);
-    });
-    
-}
-
+    this.authService
+      .signInWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+        this.router.navigate(['home']);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
 }

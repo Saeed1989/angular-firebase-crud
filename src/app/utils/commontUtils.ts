@@ -2,7 +2,7 @@
  * Common Util
  *
  * @version  0.1.1
- * @url 
+ * @url
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -10,8 +10,8 @@
  */
 
 export function isEmpty(target: any) {
-    if (target === undefined || target === null || target === '') {
-        return true;
-    }
-    return false;
+  if (target === undefined || target === null || target === '') {
+    return true;
+  }
+  return false;
 }
