@@ -2,7 +2,7 @@
  * Add page component
  *
  * @version  0.1.1
- * @url
+ * @url https://github.com/Saeed1989/Breaking-news-app-admin-panel
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -10,15 +10,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { AvatarDialogComponent } from '../../organisms/avatar-dialog/avatar-dialog.component';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../model/Item';
@@ -29,6 +21,7 @@ import { Item } from '../../../model/Item';
   styleUrls: ['./add-item.component.scss'],
 })
 export class AddItemComponent implements OnInit {
+  /** item data to be added */
   item: Item = {
     id: null,
     number: null,
@@ -40,14 +33,19 @@ export class AddItemComponent implements OnInit {
     details: null,
   };
 
+  /**
+   * constructor
+   * @param firebaseService service for firebase cloud operation
+   * @param router router
+   * @param dialog material dialog
+   */
   constructor(
     public firebaseService: FirebaseService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
     private router: Router,
     public dialog: MatDialog
   ) {}
 
+  /** init lifecycle call back */
   ngOnInit() {
     this.firebaseService.getLastId().subscribe((result: any) => {
       console.log(result.payload.data());
@@ -58,6 +56,7 @@ export class AddItemComponent implements OnInit {
     });
   }
 
+  /** save the item to cloud */
   saveItem() {
     console.log(this.item);
     this.firebaseService.setLastId(this.item.id);
@@ -67,10 +66,12 @@ export class AddItemComponent implements OnInit {
     });
   }
 
+  /** fake delete - no cloud operation */
   delete() {
     this.router.navigate(['/home']);
   }
 
+  /** cancel the process */
   cancel() {
     this.router.navigate(['/home']);
   }

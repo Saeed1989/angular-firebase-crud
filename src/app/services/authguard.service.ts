@@ -1,3 +1,6 @@
+/**
+ * authentication gurd to limit use of admin panel without logging in
+ */
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -11,8 +14,14 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  /**
+   * constructor
+   * @param authService service for authentication
+   * @param router router
+   */
   constructor(private authService: AuthService, private router: Router) {}
 
+  /** auth guard check */
   canActivate() {
     if (this.authService.isLoggedIn()) {
       return true;

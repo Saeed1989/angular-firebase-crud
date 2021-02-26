@@ -1,5 +1,4 @@
 <div class="edit-page">
-
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item active" aria-current="page">Edit Item</li>
@@ -7,46 +6,135 @@
   </nav>
 
   <div class="page-content">
-
     <div class="row">
-      <img class="img-avatar" [src]="imageUrl">
+      <img class="img-avatar" [src]="imageUrl" />
     </div>
 
     <div class="row">
-      <input type="file" id="file" class="change-img-button" (change)="handleFileInput($event.target.files)">
+      <input
+        type="file"
+        id="file"
+        class="change-img-button"
+        (change)="handleFileInput($event.target.files)"
+      />
     </div>
 
     <div class="row">
       <label>Title</label>
-      <input #inpTitle=matInput matInput placeholder="Title" class="form-control inp" [(ngModel)]="value.name" maxlength="150" required >
+      <input
+        #inpTitle="matInput"
+        matInput
+        placeholder="Title"
+        class="form-control inp"
+        [(ngModel)]="value.name"
+        maxlength="150"
+        required
+      />
       <label>Details</label>
-      <input #inpDetails=matInput matInput placeholder="Details" class="form-control inp" [(ngModel)]="value.details"  maxlength="1000" required>
+      <input
+        #inpDetails="matInput"
+        matInput
+        placeholder="Details"
+        class="form-control inp"
+        [(ngModel)]="value.details"
+        maxlength="1000"
+        required
+      />
       <div class="col-lg-1">Link</div>
-      <input #inpLink=matInput matInput type="url" placeholder="Url" class="form-control inp" [(ngModel)]="value.url" maxlength="5000" required>
+      <input
+        #inpLink="matInput"
+        matInput
+        type="url"
+        placeholder="Url"
+        class="form-control inp"
+        [(ngModel)]="value.url"
+        maxlength="5000"
+        required
+      />
       <label>Image Link</label>
-      <input #inpImageLink=matInput matInput type="url" placeholder="imageUrl" class="form-control inp" [(ngModel)]="value.imageUrl" maxlength="5000" required>
+      <input
+        #inpImageLink="matInput"
+        matInput
+        type="url"
+        placeholder="imageUrl"
+        class="form-control inp"
+        [(ngModel)]="value.imageUrl"
+        maxlength="5000"
+        required
+      />
     </div>
 
     <div class="row">
       <label class="lbl">Id </label>
-      <input #inpId=matInput matInput  [disabled] = "true" type="number" min="0" max="9999" placeholder="Id" class="form-control inp col-lg-1" [(ngModel)]="value.id" required>
+      <input
+        #inpId="matInput"
+        matInput
+        [disabled]="true"
+        type="number"
+        min="0"
+        max="9999"
+        placeholder="Id"
+        class="form-control inp col-lg-1"
+        [(ngModel)]="value.id"
+        required
+      />
       <label class="lbl">Serial Number</label>
-      <input #inpNumber=matInput matInput type="number" min="0" max="9999" placeholder="Number" class="form-control inp col-lg-1" [(ngModel)]="value.number" required>
+      <input
+        #inpNumber="matInput"
+        matInput
+        type="number"
+        min="0"
+        max="9999"
+        placeholder="Number"
+        class="form-control inp col-lg-1"
+        [(ngModel)]="value.number"
+        required
+      />
       <label class="lbl">Type</label>
-      <input #intType=matInput matInput placeholder="Type" class="form-control inp col-lg-1" [(ngModel)]="value.type" maxlength="5" required>
+      <input
+        #intType="matInput"
+        matInput
+        placeholder="Type"
+        class="form-control inp col-lg-1"
+        [(ngModel)]="value.type"
+        maxlength="5"
+        required
+      />
       <label class="lbl">Date</label>
-      <input #intDate=matInput matInput placeholder="Date" class="form-control inp col-lg-2" [(ngModel)]="value.date"  maxlength="10" required>
+      <input
+        #intDate="matInput"
+        matInput
+        placeholder="Date"
+        class="form-control inp col-lg-2"
+        [(ngModel)]="value.date"
+        maxlength="10"
+        required
+      />
     </div>
 
     <div class="row submit-button-container">
       <div class="col-md-4">
-        <button mat-raised-button class="submit-button" color="primary" type="submit" (click)="onSubmit()">Save</button>
+        <button
+          mat-raised-button
+          class="submit-button"
+          color="primary"
+          type="submit"
+          (click)="onSubmit()"
+        >
+          Save
+        </button>
       </div>
       <div class="col-md-4">
-        <button mat-raised-button class="delete-button" color="warn" type="button" (click)="delete()">Delete</button>
+        <button
+          mat-raised-button
+          class="delete-button"
+          color="warn"
+          type="button"
+          (click)="delete()"
+        >
+          Delete
+        </button>
       </div>
     </div>
-
   </div>
-  
 </div>

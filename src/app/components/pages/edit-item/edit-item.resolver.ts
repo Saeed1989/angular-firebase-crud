@@ -2,7 +2,7 @@
  * Item edit resolver
  *
  * @version  0.1.1
- * @url
+ * @url https://github.com/Saeed1989/Breaking-news-app-admin-panel
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -13,7 +13,6 @@ import { Injectable } from '@angular/core';
 import {
   Resolve,
   ActivatedRouteSnapshot,
-  ActivatedRoute,
 } from '@angular/router';
 import { FirebaseService } from '../../../services/firebase.service';
 

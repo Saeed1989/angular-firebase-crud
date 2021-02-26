@@ -2,7 +2,7 @@
  * Login page component
  *
  * @version  0.1.1
- * @url
+ * @url https://github.com/Saeed1989/Breaking-news-app-admin-panel
  *
  * Copyright Md Saeed Sharman.
  * Licensed under the MIT License:
@@ -19,18 +19,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  /** account email - added in firebase */
   email = '';
+
+  /** account password - added in firebase */
   password = '';
 
+  /**
+   * constructor
+   * @param authService service for authentication
+   * @param router router
+   */
   constructor(private authService: AuthService, private router: Router) {}
 
+  /** init life cycle call back */
   ngOnInit(): void {
     this.authService.logOut();
   }
 
+  /** process log in operation */
   logIn() {
-    console.log(this.email);
-    console.log(this.password);
     this.authService
       .signInWithEmailAndPassword(this.email, this.password)
       .then(() => {

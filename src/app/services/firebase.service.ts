@@ -1,3 +1,6 @@
+/**
+ * service for read and write operation to firebase cloud
+ */
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -13,44 +16,42 @@ export class FirebaseService {
     private afStorage: AngularFireStorage
   ) {}
 
-  getAvatars() {
-    return this.db.collection('/avatar').valueChanges();
-  }
-
-  searchItems(searchValue) {
-    return this.db
-      .collection('items_table', (ref) =>
-        ref
-          .where('name', '>=', searchValue)
-          .where('name', '<=', searchValue + '\uf8ff')
-      )
-      .snapshotChanges();
-  }
-
-  searchUsersByNumber(value) {
-    return this.db
-      .collection('items_table', (ref) => ref.orderBy('number').startAt(value))
-      .snapshotChanges();
-  }
-
+  /**
+   * get item data from cloud
+   * @param itemKey item key
+   */
   getItem(itemKey: any) {
     return this.db.collection('items_table').doc(itemKey).snapshotChanges();
   }
 
+  /**
+   * update item data to cloud
+   * @param itemKey item key
+   * @param value value of item
+   */
   updateItem(itemKey: any, value: Item) {
     return this.db.collection('items_table').doc(itemKey).set(value);
   }
 
-  deleteItem(userKey: any) {
-    return this.db.collection('items_table').doc(userKey).delete();
+  /**
+   * delete item from cloud
+   * @param itemKey item key
+   */
+  deleteItem(itemKey: any) {
+    return this.db.collection('items_table').doc(itemKey).delete();
   }
 
+  /** get all the items from cloud */
   getItems() {
     return this.db
       .collection('items_table', (ref) => ref.orderBy('number'))
       .snapshotChanges();
   }
 
+  /**
+   * add item data to cloud
+   * @param value value of itme
+   */
   creteItem(value: Item) {
     return this.db.collection('items_table').add({
       id: value.id,
@@ -64,6 +65,10 @@ export class FirebaseService {
     });
   }
 
+  /**
+   * upload item image file to cloud
+   * @param file image file
+   */
   uploadImage(file: any): Promise<any> {
     // create a random id
     const randomId = Math.random().toString(36).substring(2);
@@ -82,6 +87,7 @@ export class FirebaseService {
     });
   }
 
+  /** get id of last added item */
   getLastId() {
     return this.db
       .collection('app_settings')
@@ -89,10 +95,13 @@ export class FirebaseService {
       .snapshotChanges();
   }
 
-  setLastId(value: number) {
+  /** set id of last added item
+   * @param id id
+   */
+  setLastId(id: number) {
     return this.db
       .collection('app_settings')
       .doc('cloudSettings')
-      .update({ maxId: value });
+      .update({ maxId: id });
   }
 }

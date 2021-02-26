@@ -15,7 +15,6 @@ import { FirebaseService } from './services/firebase.service';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
-import { AvatarDialogComponent } from './components/organisms/avatar-dialog/avatar-dialog.component';
 import { EditItemComponent } from './components/pages/edit-item/edit-item.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { EditItemResolver } from './components/pages/edit-item/edit-item.resolver';
@@ -27,14 +26,12 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
-    AvatarDialogComponent,
     EditItemComponent,
     AddItemComponent,
     ItemComponent,
     HomeComponent,
     LoginComponent,
   ],
-  entryComponents: [AvatarDialogComponent],
   imports: [
     AngularFireAuthModule,
     BrowserModule,

@@ -1,5 +1,6 @@
 import { ViewType } from './constants';
 
+/** interface for item data*/
 export interface Item {
   id: number;
   number: number;
