@@ -66,11 +66,6 @@ export class AddItemComponent implements OnInit {
     });
   }
 
-  /** fake delete - no cloud operation */
-  delete() {
-    this.router.navigate(['/home']);
-  }
-
   /** cancel the process */
   cancel() {
     this.router.navigate(['/home']);

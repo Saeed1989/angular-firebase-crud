@@ -1,7 +1,9 @@
 <app-item
   [(value)]="item"
+  [isEdit]="true"
   name="item"
   ngDefaultControl
   (itemSave)="saveItem()"
   (itemDelete)="delete()"
+  (processCancel)="cancel()"
 ></app-item>

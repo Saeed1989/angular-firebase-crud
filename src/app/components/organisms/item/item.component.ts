@@ -14,30 +14,43 @@ import {
   Input,
   Output,
   EventEmitter,
+  AfterViewInit,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Item } from '../../../model/Item';
-import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
 })
-export class ItemComponent {
+export class ItemComponent implements AfterViewInit {
 
+  /** value of item */
   @Input() value: Item;
 
+  /** value change event for two way binding */
+  @Output() valueChange = new EventEmitter();
+
+  /** save item event */
   @Output() itemSave = new EventEmitter();
 
+  /** delete item event */
   @Output() itemDelete = new EventEmitter();
 
+  /** process cancel event */
   @Output() processCancel = new EventEmitter();
 
-  exampleForm: FormGroup;
-  imageUrl = null;
+  /** is for edit - flag */
+  @Input() isEdit = false; // defauuld is add
+
+  /** component state */
+  itemState = {
+    isEdit: false,
+    isAdd: true, // default is add item
+  }
 
   /**
    * constructor
@@ -49,14 +62,22 @@ export class ItemComponent {
     public dialog: MatDialog
   ) {}
 
+  /** process after view is initialised */
+  ngAfterViewInit(): void {
+    if(this.isEdit) {
+      this.itemState.isEdit = true;
+      this.itemState.isAdd = false;
+    }
+  }
+
+
+
   /** process user input of image file */
   handleFileInput(files: any) {
     this.firebaseService
       .uploadImage(files[0])
       .then((response) => {
-        console.log(response);
-        this.imageUrl = response;
-        this.value.imageUrl = this.imageUrl;
+        this.value.imageUrl = response;
       })
       .catch((error) => {
         console.error(error);

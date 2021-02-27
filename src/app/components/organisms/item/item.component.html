@@ -1,13 +1,14 @@
 <div class="edit-page">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">Edit Item</li>
+      <li *ngIf="itemState.isEdit" class="breadcrumb-item active" aria-current="page">Edit Item</li>
+      <li *ngIf="itemState.isAdd" class="breadcrumb-item active" aria-current="page">Add Item</li>
     </ol>
   </nav>
 
   <div class="page-content">
     <div class="row">
-      <img class="img-avatar" [src]="imageUrl" />
+      <img class="img-avatar" [src]="value.imageUrl" />
     </div>
 
     <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
@@ -138,7 +139,7 @@
             Save
           </button>
         </div>
-        <div class="col-md-4">
+        <div *ngIf="itemState.isEdit"class="col-md-4">
           <button
             mat-raised-button
             class="delete-button"
@@ -147,6 +148,17 @@
             (click)="delete()"
           >
             Delete
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button
+            mat-raised-button
+            class="delete-button"
+            color="warn"
+            type="button"
+            (click)="cancel()"
+          >
+            Cancel
           </button>
         </div>
       </div>
