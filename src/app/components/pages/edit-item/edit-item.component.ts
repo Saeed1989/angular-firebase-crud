@@ -1,7 +1,7 @@
 /**
  * Edit page component
  *
- * @version  0.1.1
+ * @version  0.1.2
  * @url https://github.com/Saeed1989/Breaking-news-app-admin-panel
  *
  * Copyright Md Saeed Sharman.
