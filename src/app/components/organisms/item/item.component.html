@@ -1,18 +1,30 @@
 <div class="edit-page">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li *ngIf="itemState.isEdit" class="breadcrumb-item active" aria-current="page">Edit Item</li>
-      <li *ngIf="itemState.isAdd" class="breadcrumb-item active" aria-current="page">Add Item</li>
+      <li
+        *ngIf="itemState.isEdit"
+        class="breadcrumb-item active"
+        aria-current="page"
+      >
+        Edit Item
+      </li>
+      <li
+        *ngIf="itemState.isAdd"
+        class="breadcrumb-item active"
+        aria-current="page"
+      >
+        Add Item
+      </li>
     </ol>
   </nav>
 
   <div class="page-content">
-    <div class="row">
+    <div class="div-box">
       <img class="img-avatar" [src]="value.imageUrl" />
     </div>
 
     <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
-      <div class="row">
+      <div class="div-box">
         <input
           type="file"
           id="file"
@@ -23,7 +35,7 @@
         />
       </div>
 
-      <div class="row">
+      <div class="div-box">
         <label>Title</label>
         <input
           #inpTitle="matInput"
@@ -47,7 +59,7 @@
           maxlength="1000"
           required
         />
-        <div class="col-lg-1">Link</div>
+        <label>Link</label>
         <input
           #inpLink="matInput"
           matInput
@@ -73,93 +85,105 @@
         />
       </div>
 
-      <div class="row">
-        <label class="lbl">Id </label>
-        <input
-          #inpId="matInput"
-          matInput
-          [disabled]="true"
-          type="number"
-          min="0"
-          max="9999"
-          placeholder="Id"
-          class="form-control inp col-lg-1"
-          [(ngModel)]="value.id"
-          name="id"
-          required
-          number
-        />
-        <label class="lbl">Serial Number</label>
-        <input
-          #inpNumber="matInput"
-          matInput
-          type="number"
-          min="0"
-          max="9999"
-          placeholder="Number"
-          class="form-control inp col-lg-1"
-          [(ngModel)]="value.number"
-          name="number"
-          required
-          number
-        />
-        <label class="lbl">Type</label>
-        <input
-          #intType="matInput"
-          matInput
-          placeholder="Type"
-          class="form-control inp col-lg-1"
-          [(ngModel)]="value.type"
-          name="type"
-          maxlength="5"
-          required
-        />
-        <label class="lbl">Date</label>
-        <input
-          #intDate="matInput"
-          matInput
-          placeholder="Date"
-          class="form-control inp col-lg-2"
-          [(ngModel)]="value.date"
-          name="date"
-          maxlength="10"
-          required
-        />
+      <div class="div-box">
+        <div class="one-row">
+          <div class="btn-wrap">
+            <label class="lbl">Id </label>
+            <input
+              #inpId="matInput"
+              matInput
+              [disabled]="true"
+              type="number"
+              min="0"
+              max="9999"
+              placeholder="Id"
+              class="form-control inp"
+              [(ngModel)]="value.id"
+              name="id"
+              required
+              number
+            />
+          </div>
+          <div class="btn-wrap">
+            <label class="lbl">Serial Number</label>
+            <input
+              #inpNumber="matInput"
+              matInput
+              type="number"
+              min="0"
+              max="9999"
+              placeholder="Number"
+              class="form-control inp"
+              [(ngModel)]="value.number"
+              name="number"
+              required
+              number
+            />
+          </div>
+          <div class="btn-wrap">
+            <label class="lbl">Type</label>
+            <input
+              #intType="matInput"
+              matInput
+              placeholder="Type"
+              class="form-control inp"
+              [(ngModel)]="value.type"
+              name="type"
+              maxlength="5"
+              required
+            />
+          </div>
+          <div class="btn-wrap">
+            <label class="lbl">Date</label>
+            <input
+              #intDate="matInput"
+              matInput
+              placeholder="Date"
+              class="form-control inp"
+              [(ngModel)]="value.date"
+              name="date"
+              maxlength="10"
+              required
+            />
+          </div>
+        </div>
       </div>
 
-      <div class="row submit-button-container">
-        <div class="col-md-4">
-          <button
-            mat-raised-button
-            class="submit-button"
-            color="primary"
-            type="submit"
-            [disabled]="!itemForm.form.valid || itemForm.form.untouched"
-          >
-            Save
-          </button>
-        </div>
-        <div *ngIf="itemState.isEdit"class="col-md-4">
-          <button
-            mat-raised-button
-            class="delete-button"
-            color="warn"
-            type="button"
-            (click)="delete()"
-          >
-            Delete
-          </button>
-        </div>
-        <div class="col-md-4">
-          <button
-            mat-raised-button
-            class="delete-button"
-            color="warn"
-            type="button"
-            (click)="cancel()"
-          >
-            Cancel
-          </button>
+      <div class="div-box submit-button-container">
+        <div class="one-row">
+          <div>
+            <button
+              mat-raised-button
+              class="submit-button"
+              color="primary"
+              type="submit"
+              [disabled]="!itemForm.form.valid || itemForm.form.untouched"
+            >
+              Save
+            </button>
+          </div>
+          <div *ngIf="itemState.isEdit">
+            <button
+              mat-raised-button
+              class="delete-button"
+              color="warn"
+              type="button"
+              (click)="delete()"
+            >
+              Delete
+            </button>
+          </div>
+          <div>
+            <button
+              mat-raised-button
+              class="delete-button"
+              color="warn"
+              type="button"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </form>

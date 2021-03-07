@@ -1,9 +1,30 @@
 .edit-page {
-
   padding: 20px 60px;
+  min-width: 850px;
 
   .page-content {
-    background-color: #FFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #fff;
+
+    .div-box {
+      margin-left: 5px;
+      margin-right: 5px;
+
+      .one-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .btn-wrap {
+          display: flex;
+          flex-direction: row;
+          input {
+            max-width: 110px;
+          }
+        }
+      }
+    }
 
     .img-avatar {
       width: 40%;
@@ -19,20 +40,20 @@
     .edit-form {
       padding: 20px;
 
-
       .submit-button-container {
+        margin-top: 15px;
         justify-content: center;
 
-        .submit-button{
+        .submit-button {
           width: 100%;
         }
 
-        .delete-button{
+        .delete-button {
           width: 100%;
         }
       }
 
-      .input-style{
+      .input-style {
         width: 100%;
       }
 
@@ -43,17 +64,19 @@
   }
 }
 
-.inp{
+.inp {
   margin-bottom: 25px;
 }
 
-.lbl{
-  margin-left:15px;
-  margin-right:5px;
+.lbl {
+  margin-right: 5px;
+  white-space: nowrap;
+  line-height: 35px;
+  text-align: center;
 }
 
 input.ng-touched.ng-invalid {
-  border-color: red
+  border-color: red;
 }
 
 button.disabled {
