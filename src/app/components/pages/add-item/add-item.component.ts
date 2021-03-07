@@ -48,7 +48,6 @@ export class AddItemComponent implements OnInit {
   /** init lifecycle call back */
   ngOnInit() {
     this.firebaseService.getLastId().subscribe((result: any) => {
-      console.log(result.payload.data());
       this.item.id = result.payload.data().maxId + 1;
       if (this.item.id > 9999) {
         this.item.id = 0;
@@ -58,16 +57,25 @@ export class AddItemComponent implements OnInit {
 
   /** save the item to cloud */
   saveItem() {
-    console.log(this.item);
     this.firebaseService.setLastId(this.item.id);
-    this.firebaseService.creteItem(this.item).then((res) => {
-      console.log(res);
-      this.router.navigate(['/home']);
-    });
+    this.firebaseService
+      .creteItem(this.item)
+      .then((res) => {
+        this.router.navigate(['/home']);
+      })
+      .catch((err) => {
+        this.handleError(err);
+      });
   }
 
   /** cancel the process */
   cancel() {
     this.router.navigate(['/home']);
+  }
+
+  /** process when there is error */
+  handleError(err: any) {
+    console.error(err);
+    alert(err.toString());
   }
 }

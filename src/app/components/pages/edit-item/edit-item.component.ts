@@ -22,7 +22,6 @@ import { Item } from '../../../model/Item';
   styleUrls: ['./edit-item.component.scss'],
 })
 export class EditItemComponent implements OnInit {
-
   /** data for item to be editted */
   item: Item = null;
 
@@ -51,37 +50,42 @@ export class EditItemComponent implements OnInit {
         let newItem: Item = data.payload.data();
         this.itemKey = data.payload.id;
         this.item = newItem;
-        console.log(this.item);
       }
     });
   }
 
   /** save the item to cloud*/
   saveItem() {
-    this.firebaseService.updateItem(this.itemKey, this.item).then((res) => {
-      this.router.navigate(['/home']);
-    });
+    this.firebaseService
+      .updateItem(this.itemKey, this.item)
+      .then((res) => {
+        this.router.navigate(['/home']);
+      })
+      .catch((err) => {
+        this.handleError(err);
+      });
   }
 
   /** delete the item from cloud */
   delete() {
     this.firebaseService
       .deleteItem(this.itemKey)
-      .then(
-        (res) => {
-          this.router.navigate(['/home']);
-        },
-        (err) => {
-          console.log(err);
-        }
-      )
+      .then((res) => {
+        this.router.navigate(['/home']);
+      })
       .catch((err) => {
-        console.log(err);
+        this.handleError(err);
       });
   }
 
   /** cancel the process */
   cancel() {
     this.router.navigate(['/home']);
+  }
+
+  /** process when there is error */
+  handleError(err: any) {
+    console.error(err);
+    alert(err.toString());
   }
 }

@@ -3,6 +3,7 @@
  */
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { SessionItems, TEST_USER_CREDENTIALS } from '../model/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AuthService {
   /** log in flag */
   isLogIn = false;
+
+  /** test user flag */
+  isTestUser = false;
 
   /**
    * constructor
@@ -23,10 +27,35 @@ export class AuthService {
    * @param password input password
    */
   signInWithEmailAndPassword(email: string, password: string): Promise<any> {
+    // test user
+    if (
+      email == TEST_USER_CREDENTIALS.email &&
+      TEST_USER_CREDENTIALS.password
+    ) {
+      return new Promise((resolve: any) => {
+        this.isLogIn = true;
+        this.isTestUser = true;
+        sessionStorage.setItem(
+          SessionItems.YOUSER_ATTRIBUTE,
+          JSON.stringify({
+            isLogIn: true,
+            isTestUser: true,
+          })
+        );
+        resolve();
+      });
+    }
+    // real user
     return new Promise((resolve: any, reject: any) => {
       this.fireAuthService
         .signInWithEmailAndPassword(email, password)
         .then(() => {
+          sessionStorage.setItem(
+            SessionItems.YOUSER_ATTRIBUTE,
+            JSON.stringify({
+              isLogIn: true,
+            })
+          );
           this.isLogIn = true;
           resolve();
         })
@@ -38,7 +67,14 @@ export class AuthService {
 
   /** check if user is logged in */
   isLoggedIn(): boolean {
-    return this.isLogIn;
+    if (this.isLogIn) {
+      return true;
+    }
+    let userAttr = JSON.parse(sessionStorage.getItem(SessionItems.YOUSER_ATTRIBUTE));
+    if (userAttr && userAttr.isLogIn) {
+      return true;
+    }
+    return false;
   }
 
   /** process log out operation */
@@ -47,9 +83,10 @@ export class AuthService {
       .signOut()
       .then(() => {
         this.isLogIn = false;
+        sessionStorage.removeItem(SessionItems.YOUSER_ATTRIBUTE);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   }
 }

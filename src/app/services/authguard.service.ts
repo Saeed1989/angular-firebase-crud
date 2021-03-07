@@ -14,6 +14,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  
   /**
    * constructor
    * @param authService service for authentication

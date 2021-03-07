@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
   getData() {
     this.firebaseService.getItems().subscribe((result) => {
       this.items = result;
-      console.log(this.items);
     });
   }
 
