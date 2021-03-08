@@ -4,18 +4,35 @@
     class="list-group-item list-group-item-action flex-column align-items-start"
   >
     <div class="row">
-      <div class="col col-md-2 image-col">
+      <div class="col col-md-4 image-col">
         <img class="image" [src]="item.payload.doc.data().imageUrl" />
       </div>
-      <div class="col col-md-8 text-col">
-        <h5 class="mb-1">date: {{ item.payload.doc.data().date }}</h5>
-        <h5 class="mb-1">number: {{ item.payload.doc.data().number }}</h5>
-        <h5 class="mb-1">Title: {{ item.payload.doc.data().name }}</h5>
-        <h5 class="mb-1">Details: {{ item.payload.doc.data().details }}</h5>
-        <h5 class="mb-1">number: {{ item.payload.doc.data().number }}</h5>
-        <h5>id: {{ item.payload.doc.data().id }}</h5>
-        <h5>type: {{ item.payload.doc.data().type }}</h5>
-        <small>url: {{ item.payload.doc.data().url }}</small>
+      <div class="col col-md-6 text-col">
+        <div>
+          <label>Seiral:</label>
+          <h5> : {{ item.payload.doc.data().number }}</h5>
+        </div>
+        <div>
+          <label>Date</label>
+          <h5> : {{ item.payload.doc.data().date }}</h5>
+        </div>
+        <div>
+          <label>Type</label>
+          <h5> : {{ item.payload.doc.data().type }}</h5>
+        </div>
+        <div>
+          <label>Title</label>
+          <h5> : {{ item.payload.doc.data().name }}</h5>
+        </div>
+        <div>
+          <label>Details</label>
+          <h5> : {{ item.payload.doc.data().details }}</h5>
+        </div>
+        <div>
+          <label>ID</label>
+          <h5> : {{ item.payload.doc.data().id }}</h5>
+        </div>
+        <small>URL: {{ item.payload.doc.data().url }}</small>
       </div>
       <div class="col col-md-2 actions-col">
         <button

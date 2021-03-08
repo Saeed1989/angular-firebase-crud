@@ -14,15 +14,38 @@
   padding: 40px 60px;
 
   .image-col {
-    text-align:center;
+    text-align: center;
 
     .image {
       width: 200px;
+      height: auto;
+      max-height: 300px;
     }
   }
+
   .text-col {
     margin: auto 0px;
+    line-height: 1;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      vertical-align: baseline;
+    }
+
+    label {
+      display: inline-block;
+      font-size: 1.25rem;
+      color: #333;
+      font-weight: bold;
+      flex: 0 0 5rem;
+    }
+
+    h5 {
+      display: inline;
+    }
   }
+
   .actions-col {
     text-align: center;
     margin: auto 0px;
