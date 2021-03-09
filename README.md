@@ -4,7 +4,7 @@ This is an Angular web app project.
 
 ## About
 
-This SPA is the admin panel of the Android app [Everyday Top News](https://play.google.com/store/apps/details?id=com.torunmon.apps.bdbreakingnewstopten) for updating data on the cloud server.<br/>
+This SPA is the admin panel of the Android app [Everyday Top News](https://play.google.com/store/apps/details?id=com.torunmon.apps.bdbreakingnewstopten) for updating data on the cloud server.<br/><br/>
 ![](demo.gif)
 
 ## Development server
@@ -17,7 +17,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Alpha testing
 
-For testing use the following test credentials.
+For testing use the following test credentials.<br/>
 User ID: test@testmail.com<br/>
 Password: testPassword<br/>
 (Note that cloud update will not be successful for test user)
