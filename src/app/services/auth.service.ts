@@ -3,7 +3,10 @@
  */
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { SessionItems, TEST_USER_CREDENTIALS } from '../model/constants';
+import {
+  SessionItems,
+  TEST_USER_CREDENTIALS,
+} from '../constants/common.constant';
 
 @Injectable({
   providedIn: 'root',
@@ -70,7 +73,9 @@ export class AuthService {
     if (this.isLogIn) {
       return true;
     }
-    let userAttr = JSON.parse(sessionStorage.getItem(SessionItems.YOUSER_ATTRIBUTE));
+    let userAttr = JSON.parse(
+      sessionStorage.getItem(SessionItems.YOUSER_ATTRIBUTE)
+    );
     if (userAttr && userAttr.isLogIn) {
       return true;
     }

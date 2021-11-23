@@ -1,4 +1,4 @@
-import { ViewType } from './constants';
+import { ViewType } from '../constants/common.constant';
 
 /** interface for item data*/
 export interface Item {

@@ -12,9 +12,9 @@ export enum SessionItems {
 }
 
 export const TEST_USER_CREDENTIALS = {
-  email: "test@testmail.com",
-  password: "testPassword"
-}
+  email: 'test@testmail.com',
+  password: 'testPassword',
+};
 
 /** url in firebase for the items */
 export const ITEM_LIST_URL =

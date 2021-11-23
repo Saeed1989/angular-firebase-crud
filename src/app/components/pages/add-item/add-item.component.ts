@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Router } from '@angular/router';
-import { Item } from '../../../model/Item';
+import { Item } from '../../../models/Item.model';
 
 @Component({
   selector: 'app-add-item',

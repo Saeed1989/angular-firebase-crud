@@ -19,7 +19,7 @@ import {
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase.service';
-import { Item } from '../../../model/Item';
+import { Item } from '../../../models/Item.model';
 
 @Component({
   selector: 'app-item',
@@ -27,7 +27,6 @@ import { Item } from '../../../model/Item';
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements AfterViewInit {
-
   /** value of item */
   @Input() value: Item;
 
@@ -50,7 +49,7 @@ export class ItemComponent implements AfterViewInit {
   itemState = {
     isEdit: false,
     isAdd: true, // default is add item
-  }
+  };
 
   /**
    * constructor
@@ -64,13 +63,11 @@ export class ItemComponent implements AfterViewInit {
 
   /** process after view is initialised */
   ngAfterViewInit(): void {
-    if(this.isEdit) {
+    if (this.isEdit) {
       this.itemState.isEdit = true;
       this.itemState.isAdd = false;
     }
   }
-
-
 
   /** process user input of image file */
   handleFileInput(files: any) {
@@ -86,7 +83,7 @@ export class ItemComponent implements AfterViewInit {
 
   /** submit the process */
   onSubmit() {
-      this.itemSave.emit();
+    this.itemSave.emit();
   }
 
   /** delete the item */

@@ -10,10 +10,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  ActivatedRouteSnapshot,
-} from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { FirebaseService } from '../../../services/firebase.service';
 
 @Injectable()
