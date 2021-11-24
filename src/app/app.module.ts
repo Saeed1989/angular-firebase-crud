@@ -20,6 +20,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { EditItemResolver } from './components/pages/edit-item/edit-item.resolver';
 import { AddItemComponent } from './components/pages/add-item/add-item.component';
 import { ItemComponent } from './components/organisms/item/item.component';
+import { NavbarComponent } from './components/organisms/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { environment } from '../environments/environment';
 
@@ -29,6 +30,7 @@ import { environment } from '../environments/environment';
     EditItemComponent,
     AddItemComponent,
     ItemComponent,
+    NavbarComponent,
     HomeComponent,
     LoginComponent,
   ],

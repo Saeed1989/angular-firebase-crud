@@ -3,6 +3,7 @@
  */
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { BehaviorSubject } from 'rxjs';
 import {
   SessionItems,
   TEST_USER_CREDENTIALS,
@@ -18,6 +19,9 @@ export class AuthService {
   /** test user flag */
   isTestUser = false;
 
+  /** subject for log in and out event */
+  loginSubject: BehaviorSubject<boolean> = new BehaviorSubject(true);
+
   /**
    * constructor
    * @param fireAuthService service for checking authentication in firebase cloud
@@ -30,6 +34,7 @@ export class AuthService {
    * @param password input password
    */
   signInWithEmailAndPassword(email: string, password: string): Promise<any> {
+    this.loginSubject.next(true);
     // test user
     if (
       email == TEST_USER_CREDENTIALS.email &&
@@ -63,6 +68,7 @@ export class AuthService {
           resolve();
         })
         .catch((err) => {
+          this.loginSubject.next(false);
           reject(err);
         });
     });
@@ -89,6 +95,7 @@ export class AuthService {
       .then(() => {
         this.isLogIn = false;
         sessionStorage.removeItem(SessionItems.YOUSER_ATTRIBUTE);
+        this.loginSubject.next(false);
       })
       .catch((err) => {
         console.error(err);
