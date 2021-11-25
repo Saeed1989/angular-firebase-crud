@@ -23,6 +23,8 @@ import { ItemComponent } from './components/organisms/item/item.component';
 import { NavbarComponent } from './components/organisms/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { environment } from '../environments/environment';
+import { LoadingOverlayComponent } from './components/organisms/loading-overlay/loading-overlay.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { environment } from '../environments/environment';
     AddItemComponent,
     ItemComponent,
     NavbarComponent,
+    LoadingOverlayComponent,
     HomeComponent,
     LoginComponent,
   ],
@@ -49,6 +52,7 @@ import { environment } from '../environments/environment';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule,
   ],
   exports: [MatDatepickerModule, MatInputModule, BrowserAnimationsModule],
   providers: [FirebaseService, EditItemResolver],
