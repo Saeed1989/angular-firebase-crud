@@ -1,4 +1,7 @@
-.container {
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -6,7 +9,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.05);
   z-index: 10;
   cursor: pointer;
 
