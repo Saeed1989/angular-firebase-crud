@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-edit-item',
@@ -34,12 +35,14 @@ export class EditItemComponent implements OnInit {
    * @param route route
    * @param router router
    * @param dialog material dialog
+   * @param loadingService loading indicator service
    */
   constructor(
     public firebaseService: FirebaseService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private loadingService: LoadingService
   ) {}
 
   /** init life cycle call back */
@@ -56,6 +59,7 @@ export class EditItemComponent implements OnInit {
 
   /** save the item to cloud*/
   saveItem() {
+    this.loadingService.showLoadingIndicator();
     this.firebaseService
       .updateItem(this.itemKey, this.item)
       .then((res) => {
@@ -63,11 +67,15 @@ export class EditItemComponent implements OnInit {
       })
       .catch((err) => {
         this.handleError(err);
+      })
+      .finally(() => {
+        this.loadingService.hideLoadingIndicator();
       });
   }
 
   /** delete the item from cloud */
   delete() {
+    this.loadingService.showLoadingIndicator();
     this.firebaseService
       .deleteItem(this.itemKey)
       .then((res) => {
@@ -75,6 +83,9 @@ export class EditItemComponent implements OnInit {
       })
       .catch((err) => {
         this.handleError(err);
+      })
+      .finally(() => {
+        this.loadingService.hideLoadingIndicator();
       });
   }
 

@@ -12,6 +12,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -29,8 +30,13 @@ export class LoginComponent implements OnInit {
    * constructor
    * @param authService service for authentication
    * @param router router
+   * @param loadingService loading indicator service
    */
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private loadingService: LoadingService
+  ) {}
 
   /** init life cycle call back */
   ngOnInit(): void {
@@ -39,6 +45,7 @@ export class LoginComponent implements OnInit {
 
   /** process log in operation */
   logIn() {
+    this.loadingService.showLoadingIndicator();
     this.authService
       .signInWithEmailAndPassword(this.email, this.password)
       .then(() => {
@@ -46,6 +53,9 @@ export class LoginComponent implements OnInit {
       })
       .catch((err) => {
         alert(err);
+      })
+      .finally(() => {
+        this.loadingService.hideLoadingIndicator();
       });
   }
 }

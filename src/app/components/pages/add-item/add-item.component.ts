@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-add-item',
@@ -38,11 +39,13 @@ export class AddItemComponent implements OnInit {
    * @param firebaseService service for firebase cloud operation
    * @param router router
    * @param dialog material dialog
+   * @param loadingService loading indicator service
    */
   constructor(
     public firebaseService: FirebaseService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private loadingService: LoadingService
   ) {}
 
   /** init lifecycle call back */
@@ -57,6 +60,7 @@ export class AddItemComponent implements OnInit {
 
   /** save the item to cloud */
   saveItem() {
+    this.loadingService.showLoadingIndicator();
     this.firebaseService.setLastId(this.item.id);
     this.firebaseService
       .creteItem(this.item)
@@ -65,6 +69,9 @@ export class AddItemComponent implements OnInit {
       })
       .catch((err) => {
         this.handleError(err);
+      })
+      .finally(() => {
+        this.loadingService.hideLoadingIndicator();
       });
   }
 
