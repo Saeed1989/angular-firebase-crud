@@ -4,7 +4,7 @@ This is an Angular web app project. [Live Link](https://breakingnewsbangla-5e365
 
 ## About
 
-This SPA is the admin panel of the Android app "Everyday Top News" for updating data on the cloud server. Firebase is used as clound server. User authentication is also done by firebase.<br/><br/>
+This SPA is the admin panel of the Android app "Everyday Top News" for updating data on the cloud server. Firebase is used as cloud server. User authentication is also done by firebase.<br/><br/>
 ![](demo.gif)
 <br/><br/>
 ![](demo2.gif)
