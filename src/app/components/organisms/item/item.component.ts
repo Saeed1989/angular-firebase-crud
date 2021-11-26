@@ -64,8 +64,10 @@ export class ItemComponent implements AfterViewInit {
   /** process after view is initialised */
   ngAfterViewInit(): void {
     if (this.isEdit) {
-      this.itemState.isEdit = true;
-      this.itemState.isAdd = false;
+      setTimeout(() => {
+        this.itemState.isEdit = true;
+        this.itemState.isAdd = false;
+      });
     }
   }
 

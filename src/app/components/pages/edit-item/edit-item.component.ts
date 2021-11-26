@@ -9,13 +9,14 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';
 import { LoadingService } from 'src/app/services/loading.service';
+import { YesNoDialogComponent } from '../../organisms/yesnodialog/yesno-dialog.component';
 
 @Component({
   selector: 'app-edit-item',
@@ -24,10 +25,22 @@ import { LoadingService } from 'src/app/services/loading.service';
 })
 export class EditItemComponent implements OnInit {
   /** data for item to be editted */
-  item: Item = null;
+  item: Item = {
+    id: null,
+    number: null,
+    name: null,
+    date: null,
+    type: null,
+    imageUrl: null,
+    url: null,
+    details: null,
+  };
 
   /** key of the item  - item id*/
   itemKey = 0;
+
+  @ViewChild('confirmation')
+  confirmation: YesNoDialogComponent;
 
   /**
    * constructor
@@ -50,9 +63,11 @@ export class EditItemComponent implements OnInit {
     this.route.data.subscribe((routeData) => {
       const data = routeData.data;
       if (data) {
-        let newItem: Item = data.payload.data();
-        this.itemKey = data.payload.id;
-        this.item = newItem;
+        setTimeout(() => {
+          let newItem: Item = data.payload.data();
+          this.itemKey = data.payload.id;
+          this.item = newItem;
+        });
       }
     });
   }
@@ -75,18 +90,7 @@ export class EditItemComponent implements OnInit {
 
   /** delete the item from cloud */
   delete() {
-    this.loadingService.showLoadingIndicator();
-    this.firebaseService
-      .deleteItem(this.itemKey)
-      .then((res) => {
-        this.router.navigate(['/home']);
-      })
-      .catch((err) => {
-        this.handleError(err);
-      })
-      .finally(() => {
-        this.loadingService.hideLoadingIndicator();
-      });
+    this.confirmation.open();
   }
 
   /** cancel the process */
@@ -98,5 +102,22 @@ export class EditItemComponent implements OnInit {
   handleError(err: any) {
     console.error(err);
     alert(err.toString());
+  }
+
+  deleteConfirmation(confirmation: boolean) {
+    if (confirmation) {
+      this.loadingService.showLoadingIndicator();
+      this.firebaseService
+        .deleteItem(this.itemKey)
+        .then((res) => {
+          this.router.navigate(['/home']);
+        })
+        .catch((err) => {
+          this.handleError(err);
+        })
+        .finally(() => {
+          this.loadingService.hideLoadingIndicator();
+        });
+    }
   }
 }

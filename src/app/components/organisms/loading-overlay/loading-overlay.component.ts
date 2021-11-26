@@ -12,9 +12,6 @@
 import {
   Component,
   Input,
-  Output,
-  EventEmitter,
-  AfterViewInit,
   OnInit,
   SimpleChanges,
   OnChanges,
@@ -28,9 +25,7 @@ import {
 export class LoadingOverlayComponent implements OnInit, OnChanges {
   /** flag for loading status */
   @Input() isLoading: boolean;
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
     this.handleScroll(changes.isLoading.currentValue);

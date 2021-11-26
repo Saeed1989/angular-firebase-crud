@@ -7,3 +7,8 @@
   (itemDelete)="delete()"
   (processCancel)="cancel()"
 ></app-item>
+<app-yesno-dialog
+  #confirmation
+  message="Do you want to DELETE this item?"
+  (dialogResult)="deleteConfirmation($event)"
+></app-yesno-dialog>

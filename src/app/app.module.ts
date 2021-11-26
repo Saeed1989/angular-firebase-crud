@@ -25,6 +25,8 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { environment } from '../environments/environment';
 import { LoadingOverlayComponent } from './components/organisms/loading-overlay/loading-overlay.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { YesNoDialogComponent } from './components/organisms/yesnodialog/yesno-dialog.component';
+import { ConfirmationDialog } from './components/molecules/confirmdialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ItemComponent,
     NavbarComponent,
     LoadingOverlayComponent,
+    YesNoDialogComponent,
+    ConfirmationDialog,
     HomeComponent,
     LoginComponent,
   ],
