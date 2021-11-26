@@ -1,11 +1,13 @@
 # # Breaking-news-app-admin-panel
 
-This is an Angular web app project.
+This is an Angular web app project. [Live Link](https://breakingnewsbangla-5e365.web.app/)
 
 ## About
 
-This SPA is the admin panel of the Android app [Everyday Top News](https://play.google.com/store/apps/details?id=com.torunmon.apps.bdbreakingnewstopten) for updating data on the cloud server.<br/><br/>
+This SPA is the admin panel of the Android app "Everyday Top News" for updating data on the cloud server. Firebase is used as clound server. User authentication is also done by firebase.<br/><br/>
 ![](demo.gif)
+<br/><br/>
+![](demo2.gif)
 
 ## Development server
 
