@@ -9,6 +9,23 @@ This SPA is the admin panel of the Android app "Everyday Top News" for updating 
 <br/><br/>
 ![](demo2.gif)
 
+## Technology stack
+
+As the name suggests, this repository is built on top of Angular, however in the implementation detail other supporting technologies will be found as well.
+
+#### Client side
+
+- [Angular] - A JavaScript framework for building user interfaces
+- [AngularMaterial] - Material Design components for Angular
+- [Jasmine] - A JavaScript test framework
+- [AngularFirestore] - Promise based HTTP client for the browser and Firebase Firestore database
+- [AngularFireStorage] - Promise based HTTP client for the browser and Firebase file storage
+
+#### Server side
+
+- [CloudFirestore] - A NoSQL document database in the Firebase cloud
+- [CloudFireStorage] - A file storage service in the Firebase cloud
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
