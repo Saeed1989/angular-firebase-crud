@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { LoadingService } from './services/loading.service';
 
@@ -15,7 +14,6 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
     private loadingService: LoadingService
   ) {}
 
