@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';
-import { LoadingService } from 'src/app/services/loading.service';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 
 @Component({
   selector: 'app-add-item',
@@ -78,6 +78,18 @@ export class AddItemComponent implements OnInit {
   /** cancel the process */
   cancel() {
     this.router.navigate(['/home']);
+  }
+
+  /** process user input of image file */
+  handleFileInput(files: any) {
+    this.firebaseService
+      .uploadImage(files[0])
+      .then((response) => {
+        this.item.imageUrl = response;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   /** process when there is error */

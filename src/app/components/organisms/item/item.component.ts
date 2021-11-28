@@ -42,6 +42,9 @@ export class ItemComponent implements AfterViewInit {
   /** process cancel event */
   @Output() processCancel = new EventEmitter();
 
+  /** file input event */
+  @Output() fileInput = new EventEmitter();
+
   /** is for edit - flag */
   @Input() isEdit = false; // defauuld is add
 
@@ -53,13 +56,9 @@ export class ItemComponent implements AfterViewInit {
 
   /**
    * constructor
-   * @param firebaseService service for firebase cloud operation
-   * @param dialog material dialog
+
    */
-  constructor(
-    public firebaseService: FirebaseService,
-    public dialog: MatDialog
-  ) {}
+  constructor() {}
 
   /** process after view is initialised */
   ngAfterViewInit(): void {
@@ -73,14 +72,7 @@ export class ItemComponent implements AfterViewInit {
 
   /** process user input of image file */
   handleFileInput(files: any) {
-    this.firebaseService
-      .uploadImage(files[0])
-      .then((response) => {
-        this.value.imageUrl = response;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    this.fileInput.emit(files);
   }
 
   /** submit the process */

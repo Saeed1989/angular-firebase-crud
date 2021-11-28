@@ -3,7 +3,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { EditItemComponent } from './components/pages/edit-item/edit-item.component';
 import { EditItemResolver } from './components/pages/edit-item/edit-item.resolver';
 import { AddItemComponent } from './components/pages/add-item/add-item.component';
-import { AuthGuard } from './services/authguard.service';
+import { AuthGuard } from './services/auth-guard/authguard.service';
 import { LoginComponent } from './components/pages/login/login.component';
 
 export const rootRouterConfig: Routes = [

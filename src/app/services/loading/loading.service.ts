@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { BehaviorSubject } from 'rxjs';
-import { Item } from '../models/Item.model';
+import { Item } from '../../models/Item.model';
 
 @Injectable({
   providedIn: 'root',
