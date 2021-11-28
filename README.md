@@ -15,24 +15,35 @@ As the name suggests, this repository is built on top of Angular, however in the
 
 #### Client side
 
-- [Angular] - A JavaScript framework for building user interfaces
-- [AngularMaterial] - Material Design components for Angular
-- [Jasmine] - A JavaScript test framework
-- [AngularFirestore] - Promise based HTTP client for the browser and Firebase Firestore database
-- [AngularFireStorage] - Promise based HTTP client for the browser and Firebase file storage
+- [Angular](https://angular.io/) - A JavaScript framework for building user interfaces
+- [AngularMaterial](https://material.angular.io/) - Material Design components for Angular
+- [Jasmine](https://jasmine.github.io/) - A JavaScript test framework
+- [AngularFirestore](https://github.com/angular/angularfire) - Promise based HTTP client for the browser and Firebase Firestore database
+- [AngularFireStorage](https://github.com/angular/angularfire/blob/master/docs/storage/storage.md) - Promise based HTTP client for the browser and Firebase file storage
 
 #### Server side
 
-- [CloudFirestore] - A NoSQL document database in the Firebase cloud
-- [CloudFireStorage] - A file storage service in the Firebase cloud
+- [CloudFirestore](https://firebase.google.com/products/firestore) - A NoSQL document database in the Firebase cloud
+- [CloudFireStorage](https://firebase.google.com/docs/storage) - A file storage service in the Firebase cloud
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+##### Prerequisites
+
+- Node.js : To run npm packages
+
+##### Steps
+
+- Run `npm install` to install all required dependencies.
+- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Alpha testing
 
@@ -40,10 +51,6 @@ For testing use the following test credentials.<br/>
 User ID: test@testmail.com<br/>
 Password: testPassword<br/>
 (Note that cloud update will not be successful for test user)
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## License
 
