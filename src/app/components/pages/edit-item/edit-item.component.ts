@@ -12,7 +12,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { FirebaseService } from '../../../services/firebase.service';
+import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';
 import { LoadingService } from 'src/app/services/loading/loading.service';
@@ -47,14 +47,12 @@ export class EditItemComponent implements OnInit {
    * @param firebaseService service for firebase cloud service
    * @param route route
    * @param router router
-   * @param dialog material dialog
    * @param loadingService loading indicator service
    */
   constructor(
     public firebaseService: FirebaseService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog,
     private loadingService: LoadingService
   ) {}
 

@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { FirebaseService } from './services/firebase.service';
+import { FirebaseService } from './services/firebase/firebase.service';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';

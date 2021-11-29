@@ -11,7 +11,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FirebaseService } from '../../../services/firebase.service';
+import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';
 import { LoadingService } from 'src/app/services/loading/loading.service';
@@ -38,13 +38,11 @@ export class AddItemComponent implements OnInit {
    * constructor
    * @param firebaseService service for firebase cloud operation
    * @param router router
-   * @param dialog material dialog
    * @param loadingService loading indicator service
    */
   constructor(
     public firebaseService: FirebaseService,
     private router: Router,
-    public dialog: MatDialog,
     private loadingService: LoadingService
   ) {}
 

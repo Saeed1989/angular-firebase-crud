@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 import {
   SessionItems,
   TEST_USER_CREDENTIALS,
-} from '../constants/common.constant';
+} from '../../constants/common.constant';
 
 @Injectable({
   providedIn: 'root',
