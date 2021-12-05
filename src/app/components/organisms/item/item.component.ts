@@ -16,9 +16,6 @@ import {
   EventEmitter,
   AfterViewInit,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { Item } from '../../../models/Item.model';
 
 @Component({

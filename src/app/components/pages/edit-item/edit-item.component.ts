@@ -11,7 +11,6 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';

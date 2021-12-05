@@ -12,12 +12,15 @@ import { Item } from '../../models/Item.model';
 })
 export class LoadingService {
   loadingSubject = new BehaviorSubject<boolean>(false);
+
   constructor() {}
 
+  /** show the loading spinner */
   showLoadingIndicator() {
     this.loadingSubject.next(true);
   }
 
+  /** hide the loading spinner */
   hideLoadingIndicator() {
     this.loadingSubject.next(false);
   }

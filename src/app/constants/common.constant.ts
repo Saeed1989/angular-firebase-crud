@@ -11,6 +11,7 @@ export enum SessionItems {
   YOUSER_ATTRIBUTE = 'user_atttribute',
 }
 
+/** credentials for alpha testing */
 export const TEST_USER_CREDENTIALS = {
   email: 'test@testmail.com',
   password: 'testPassword',

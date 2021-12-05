@@ -9,22 +9,8 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  AfterViewInit,
-  OnInit,
-  SimpleChanges,
-  OnChanges,
-  Inject,
-} from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialog } from '../../molecules/confirmdialog/confirm-dialog.component';
 
 @Component({
@@ -42,6 +28,9 @@ export class YesNoDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * oen the dialog
+   */
   open() {
     const dialogRef = this.dialog.open(ConfirmationDialog, {
       data: {
@@ -58,6 +47,10 @@ export class YesNoDialogComponent implements OnInit {
     });
   }
 
+  /**
+   * close the dialog
+   * @param result the result of the dialog : yes/no
+   */
   close(result: boolean) {
     this.dialogResult.emit(result);
   }

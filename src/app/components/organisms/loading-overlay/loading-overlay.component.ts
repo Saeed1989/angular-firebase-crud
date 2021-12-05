@@ -25,6 +25,7 @@ import {
 export class LoadingOverlayComponent implements OnInit, OnChanges {
   /** flag for loading status */
   @Input() isLoading: boolean;
+
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {

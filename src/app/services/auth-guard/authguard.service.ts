@@ -2,12 +2,7 @@
  * authentication gurd to limit use of admin panel without logging in
  */
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router,
-} from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({

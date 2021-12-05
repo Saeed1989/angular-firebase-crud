@@ -1,3 +1,14 @@
+/**
+ * Url settings of the app
+ *
+ * @version  1.0.0
+ * @url
+ *
+ * Copyright Md Saeed Sharman.
+ * Licensed under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
 import { EditItemComponent } from './components/pages/edit-item/edit-item.component';
