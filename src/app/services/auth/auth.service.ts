@@ -26,7 +26,9 @@ export class AuthService {
    * constructor
    * @param fireAuthService service for checking authentication in firebase cloud
    */
-  constructor(private fireAuthService: AngularFireAuth) {}
+  constructor(private fireAuthService: AngularFireAuth) {
+    this.fireAuthService.setPersistence('session');
+  }
 
   /**
    * process sign in opertion
