@@ -1,5 +1,5 @@
 /**
- * Edit page component
+ * Item base class
  *
  * @version  1.0.0
  * @url https://github.com/Saeed1989/Breaking-news-app-admin-panel
@@ -9,13 +9,13 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-import { OnInit, ViewChild } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';
 import { LoadingService } from 'src/app/services/loading/loading.service';
-import { YesNoDialogComponent } from '../../organisms/yesnodialog/yesno-dialog.component';
+import { YesNoDialogComponent } from '../yesnodialog/yesno-dialog.component';
 
 export class BaseItemCtrl {
   /** confirmation modal for delete item */

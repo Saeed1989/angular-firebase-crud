@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../../services/firebase/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from 'src/app/services/loading/loading.service';
-import { BaseItemCtrl } from '../../organisms/item-base/base-item.component';
+import { BaseItemCtrl } from '../../organisms/base-item-ctrl/base-item-ctrl';
 
 @Component({
   selector: 'app-add-item',

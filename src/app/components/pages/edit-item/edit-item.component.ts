@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 import { Item } from '../../../models/Item.model';
 import { LoadingService } from 'src/app/services/loading/loading.service';
 import { YesNoDialogComponent } from '../../organisms/yesnodialog/yesno-dialog.component';
-import { BaseItemCtrl } from '../../organisms/item-base/base-item.component';
+import { BaseItemCtrl } from '../../organisms/base-item-ctrl/base-item-ctrl';
 
 @Component({
   selector: 'app-edit-item',
