@@ -1,10 +1,7 @@
 # # Breaking-news-app-admin-panel
 
-This is an Angular web app project. [Live Link](https://breakingnewsbangla-5e365.web.app/)
-
-## About
-
-This SPA is the admin panel of the Android app "Everyday Top News" for updating data on the cloud server. Firebase is used as cloud server. User authentication is also done by firebase.<br/><br/>
+This SPA is the admin panel of the Android app "Everyday Top News" for updating data on the cloud server. Firebase is used as cloud server. User authentication is also done by firebase.<br/>
+[Live Link](https://breakingnewsbangla-5e365.web.app/)<br/><br/>
 ![](demo.gif)
 <br/><br/>
 ![](demo2.gif)
@@ -55,4 +52,4 @@ Password: testPassword<br/>
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is [MIT licensed](https://github.com/Saeed1989/angular-firebase-crud/blob/main/LICENSE)
